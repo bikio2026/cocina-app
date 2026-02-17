@@ -459,7 +459,7 @@ function StepTimer({ seconds }) {
 }
 
 // Componente extraído para evitar bug de hooks en render condicional
-function CookingScreen({ recipe, onBack, onFinish }) {
+function CookingScreen({ recipe, onBack, onFinish, onAddToPantry }) {
   const [activeTab, setActiveTab] = useState('prep');
   const [checkedSteps, setCheckedSteps] = useState({});
   const [checkedIngredients, setCheckedIngredients] = useState({});
@@ -467,7 +467,12 @@ function CookingScreen({ recipe, onBack, onFinish }) {
   const [showDone, setShowDone] = useState(false);
 
   const toggleFound = (idx) => {
-    setManuallyFound(prev => ({ ...prev, [idx]: !prev[idx] }));
+    const wasFound = manuallyFound[idx];
+    setManuallyFound(prev => ({ ...prev, [idx]: !wasFound }));
+    // Si lo marca como encontrado y no estaba en alacena, agregarlo
+    if (!wasFound && !recipe.ingredients[idx].has) {
+      onAddToPantry(recipe.ingredients[idx].name);
+    }
   };
 
   return (
@@ -728,14 +733,15 @@ export default function App() {
 
   // --- PANTALLA HOME ---
   const renderHome = () => (
-    <div className="flex flex-col h-full bg-[#E8E6E1] p-6 relative overflow-hidden font-sans">
-      <div className="z-10 mt-8 mb-6">
-        <h1 className="text-3xl font-black text-stone-800 leading-tight tracking-tight">
-          Hola, <span className="text-[#E9633E]">Chef.</span>
-        </h1>
-        <p className="text-stone-500 text-sm mt-1 font-medium">Tu cocina está lista.</p>
-      </div>
-      <div className="mt-4 z-10 space-y-8">
+    <div className="flex flex-col h-full bg-[#E8E6E1] relative font-sans">
+      <div className="flex-1 overflow-y-auto p-6 pb-24">
+        <div className="mt-8 mb-6">
+          <h1 className="text-3xl font-black text-stone-800 leading-tight tracking-tight">
+            Hola, <span className="text-[#E9633E]">Chef.</span>
+          </h1>
+          <p className="text-stone-500 text-sm mt-1 font-medium">Tu cocina está lista.</p>
+        </div>
+        <div className="mt-4 space-y-8">
         <div className="rounded-2xl p-6 shadow-xl relative overflow-hidden group border border-white/20" style={{ backgroundColor: '#537987' }}>
           <div className="relative z-10 text-white">
             <div className="flex justify-between items-center mb-4">
@@ -821,8 +827,9 @@ export default function App() {
             </div>
           </div>
         </div>
+        </div>
       </div>
-      <div className="mt-auto mb-4 z-10">
+      <div className="absolute bottom-0 left-0 right-0 p-6 pt-3 bg-gradient-to-t from-[#E8E6E1] via-[#E8E6E1] to-transparent">
         <button
           onClick={() => setScreen('results')}
           className="w-full bg-stone-900 text-white py-4 rounded-2xl font-bold text-lg shadow-xl hover:bg-black transform transition active:scale-95 flex items-center justify-center space-x-3"
@@ -1102,7 +1109,7 @@ export default function App() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-stone-200 p-4 font-sans">
-      <div className="w-full max-w-md h-[90vh] aspect-[9/19] bg-[#E8E6E1] rounded-[3rem] overflow-hidden shadow-2xl relative border-[8px] border-stone-900 ring-2 ring-stone-400/50">
+      <div className="w-[375px] h-[812px] bg-[#E8E6E1] rounded-[3rem] overflow-hidden shadow-2xl relative border-[8px] border-stone-900 ring-2 ring-stone-400/50">
         <div className="absolute top-0 w-full h-8 bg-[#E8E6E1] z-50 flex justify-between items-center px-8 mt-2">
           <span className="text-xs font-bold text-black">9:41</span>
           <div className="w-24 h-6 bg-black rounded-b-2xl absolute left-1/2 -translate-x-1/2 top-0"></div>
@@ -1116,7 +1123,22 @@ export default function App() {
           {screen === 'inventory' && renderInventory()}
           {screen === 'results' && renderResults()}
           {screen === 'cooking' && selectedRecipe && (
-            <CookingScreen recipe={selectedRecipe} onBack={() => setScreen('results')} onFinish={() => setScreen('home')} />
+            <CookingScreen
+              recipe={selectedRecipe}
+              onBack={() => setScreen('results')}
+              onFinish={() => setScreen('home')}
+              onAddToPantry={(name) => {
+                const exists = finalPantryList.some(item => item.name.toLowerCase() === name.toLowerCase());
+                if (!exists) {
+                  setFinalPantryList(prev => [...prev, {
+                    name,
+                    category: detectCategory(name),
+                    quantity: null,
+                    unit: detectUnit(name)
+                  }]);
+                }
+              }}
+            />
           )}
         </div>
         <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1.5 bg-stone-900 rounded-full z-50 opacity-90"></div>
