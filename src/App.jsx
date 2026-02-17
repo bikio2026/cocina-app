@@ -5,6 +5,7 @@ import { Clock, ChefHat, ArrowLeft, Flame, AlertCircle, Check, Play, Pause, Rota
 // 1. BASE DE DATOS SIMULADA (RECIPES_DB)
 // ==========================================
 const RECIPES_DB = [
+  // === ENERGETIC ===
   {
     id: 1,
     title: "Wok de Pollo Express",
@@ -16,7 +17,7 @@ const RECIPES_DB = [
     ingredients: [
       { name: "Pollo", sub: "Tofu, Seitán o Carne de Cerdo" },
       { name: "Pimiento", sub: "Zanahoria en tiras o Calabacín" },
-      { name: "Salsa de Soja", sub: "Tamari, Aminos de coco o Sal disuelta en agua con azúcar" },
+      { name: "Salsa de Soja", sub: "Tamari o Sal disuelta en agua con azúcar" },
       { name: "Ajo", sub: "Ajo en polvo o Aceite de ajo" },
       { name: "Jengibre", sub: "Jengibre en polvo o Ralladura de limón" }
     ],
@@ -30,6 +31,75 @@ const RECIPES_DB = [
   },
   {
     id: 2,
+    title: "Omelette Proteico",
+    image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&q=80&w=1000",
+    time: 10,
+    calories: 350,
+    mood: "energetic",
+    moodLabel: "Energético",
+    ingredients: [
+      { name: "Huevo", sub: "Claras de huevo o Tofu sedoso" },
+      { name: "Queso", sub: "Levadura nutricional o Ricota" },
+      { name: "Tomate", sub: "Pimiento rojo o Morrones asados" },
+      { name: "Espinaca", sub: "Rúcula, Acelga o cualquier hoja verde" }
+    ],
+    steps: [
+      { text: "Batir 3 huevos con sal y pimienta.", time: 0 },
+      { text: "Calentar sartén antiadherente con un poco de aceite.", time: 0 },
+      { text: "Verter huevos y cocinar a fuego medio-bajo.", time: 120 },
+      { text: "Agregar relleno en una mitad y doblar.", time: 60 },
+      { text: "Servir con hojas verdes al costado.", time: 0 }
+    ]
+  },
+  {
+    id: 3,
+    title: "Arroz con Pollo",
+    image: "https://images.unsplash.com/photo-1516714435131-44d6b64dc6a2?auto=format&fit=crop&q=80&w=1000",
+    time: 40,
+    calories: 550,
+    mood: "energetic",
+    moodLabel: "Energético",
+    ingredients: [
+      { name: "Arroz", sub: "Quinoa o Fideos cortados" },
+      { name: "Pollo", sub: "Cerdo desmenuzado o Garbanzos" },
+      { name: "Cebolla", sub: "Puerro o Cebolla de verdeo" },
+      { name: "Pimiento", sub: "Zanahoria rallada o Choclo" },
+      { name: "Ajo", sub: "Ajo en polvo" }
+    ],
+    steps: [
+      { text: "Dorar el pollo trozado con aceite y reservar.", time: 300 },
+      { text: "En la misma olla, rehogar cebolla, ajo y pimiento.", time: 180 },
+      { text: "Agregar el arroz y nacrar un minuto.", time: 60 },
+      { text: "Incorporar el pollo, cubrir con agua caliente (doble de arroz) y sal.", time: 0 },
+      { text: "Cocinar tapado a fuego bajo sin revolver.", time: 900 },
+      { text: "Apagar, dejar reposar tapado 5 min y servir.", time: 300 }
+    ]
+  },
+  {
+    id: 4,
+    title: "Wrap de Pollo y Verduras",
+    image: "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&q=80&w=1000",
+    time: 15,
+    calories: 400,
+    mood: "energetic",
+    moodLabel: "Energético",
+    ingredients: [
+      { name: "Pollo", sub: "Atún en lata o Hummus" },
+      { name: "Harina", sub: "Tortillas compradas o Pan árabe" },
+      { name: "Lechuga", sub: "Rúcula, Espinaca o Repollo" },
+      { name: "Tomate", sub: "Pimiento asado o Zanahoria rallada" },
+      { name: "Limón", sub: "Vinagre o Mostaza" }
+    ],
+    steps: [
+      { text: "Cortar el pollo en tiras finas y saltear con sal y limón.", time: 180 },
+      { text: "Calentar la tortilla en sartén seca.", time: 30 },
+      { text: "Armar: lechuga, pollo, tomate en la tortilla.", time: 0 },
+      { text: "Enrollar bien apretado y cortar al medio.", time: 0 }
+    ]
+  },
+  // === COMFORT ===
+  {
+    id: 5,
     title: "Risotto de Setas",
     image: "https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&q=80&w=1000",
     time: 45,
@@ -37,21 +107,91 @@ const RECIPES_DB = [
     mood: "comfort",
     moodLabel: "Comfort",
     ingredients: [
-      { name: "Arroz", sub: "Arroz común (quedará menos cremoso) o Quinua" },
+      { name: "Arroz", sub: "Arroz común (menos cremoso) o Quinoa" },
       { name: "Setas", sub: "Champiñones de lata o Berenjenas asadas" },
-      { name: "Vino Blanco", sub: "Vinagre de manzana diluido o Caldo extra con limón" },
-      { name: "Queso Parmesano", sub: "Cualquier queso curado rallado o Levadura nutricional" },
-      { name: "Mantequilla", sub: "Aceite de oliva o Margarina" }
+      { name: "Vino", sub: "Vinagre de manzana diluido o Caldo con limón" },
+      { name: "Queso", sub: "Cualquier queso rallado o Levadura nutricional" },
+      { name: "Manteca", sub: "Aceite de oliva o Margarina" }
     ],
     steps: [
       { text: "Sofreír cebolla y setas.", time: 300 },
       { text: "Tostar el arroz hasta que esté nacarado.", time: 120 },
       { text: "Agregar caldo poco a poco removiendo.", time: 1200 },
-      { text: "Mantecar con queso y mantequilla.", time: 0 }
+      { text: "Mantecar con queso y manteca fuera del fuego.", time: 0 }
     ]
   },
   {
-    id: 3,
+    id: 6,
+    title: "Milanesas con Puré",
+    image: "https://images.unsplash.com/photo-1585325701956-60dd9c8553bc?auto=format&fit=crop&q=80&w=1000",
+    time: 40,
+    calories: 700,
+    mood: "comfort",
+    moodLabel: "Comfort",
+    ingredients: [
+      { name: "Carne", sub: "Pollo, Berenjena o Soja texturizada" },
+      { name: "Huevo", sub: "Leche con harina (mezcla espesa)" },
+      { name: "Pan", sub: "Harina de maíz o Avena procesada" },
+      { name: "Papa", sub: "Batata, Calabaza o Mandioca" },
+      { name: "Leche", sub: "Caldo o Agua con manteca" }
+    ],
+    steps: [
+      { text: "Pelar papas, cortar en cubos y hervir con sal.", time: 900 },
+      { text: "Pasar la carne por harina, huevo batido y pan rallado.", time: 0 },
+      { text: "Freír las milanesas en aceite caliente.", time: 300 },
+      { text: "Pisar las papas con leche caliente y manteca.", time: 0 },
+      { text: "Servir milanesa sobre el puré.", time: 0 }
+    ]
+  },
+  {
+    id: 7,
+    title: "Fideos con Salsa Casera",
+    image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&q=80&w=1000",
+    time: 25,
+    calories: 500,
+    mood: "comfort",
+    moodLabel: "Comfort",
+    ingredients: [
+      { name: "Pasta", sub: "Fideos secos, Ñoquis o Arroz" },
+      { name: "Tomate", sub: "Salsa de tomate envasada o Pimiento asado" },
+      { name: "Cebolla", sub: "Puerro o Cebolla de verdeo" },
+      { name: "Ajo", sub: "Ajo en polvo" },
+      { name: "Queso", sub: "Levadura nutricional o Ricota" }
+    ],
+    steps: [
+      { text: "Poner agua a hervir con sal para los fideos.", time: 0 },
+      { text: "Rehogar cebolla y ajo picados en aceite de oliva.", time: 180 },
+      { text: "Agregar tomates, sal, azúcar (pizca) y cocinar.", time: 600 },
+      { text: "Cocinar los fideos al dente y escurrir.", time: 480 },
+      { text: "Mezclar fideos con salsa y servir con queso.", time: 0 }
+    ]
+  },
+  {
+    id: 8,
+    title: "Guiso de Lentejas",
+    image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&q=80&w=1000",
+    time: 50,
+    calories: 480,
+    mood: "comfort",
+    moodLabel: "Comfort",
+    ingredients: [
+      { name: "Lenteja", sub: "Porotos o Garbanzos (remojar antes)" },
+      { name: "Papa", sub: "Batata o Zapallo" },
+      { name: "Zanahoria", sub: "Calabaza o Zapallito" },
+      { name: "Cebolla", sub: "Puerro" },
+      { name: "Ajo", sub: "Ajo en polvo" }
+    ],
+    steps: [
+      { text: "Rehogar cebolla, ajo y zanahoria en cubos.", time: 300 },
+      { text: "Agregar lentejas (lavadas), papa en cubos y cubrir con agua.", time: 0 },
+      { text: "Condimentar con sal, comino y pimentón.", time: 0 },
+      { text: "Cocinar a fuego medio-bajo tapado.", time: 1500 },
+      { text: "Verificar que las lentejas estén tiernas y servir.", time: 0 }
+    ]
+  },
+  // === HEALTHY ===
+  {
+    id: 9,
     title: "Ensalada Detox Verde",
     image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=1000",
     time: 10,
@@ -59,16 +199,175 @@ const RECIPES_DB = [
     mood: "healthy",
     moodLabel: "Sano",
     ingredients: [
-      { name: "Espinacas", sub: "Lechuga, Rúcula o Kale masajeadas" },
-      { name: "Aguacate", sub: "Hummus o Queso crema (para untuosidad)" },
+      { name: "Espinaca", sub: "Lechuga, Rúcula o Kale" },
+      { name: "Aguacate", sub: "Hummus o Queso crema" },
       { name: "Pepino", sub: "Apio o Manzana verde" },
-      { name: "Limón", sub: "Vinagre de sidra o Naranja agria" }
+      { name: "Limón", sub: "Vinagre de sidra o Naranja" }
     ],
     steps: [
       { text: "Lavar bien las espinacas.", time: 0 },
       { text: "Cortar aguacate y pepino en rodajas.", time: 0 },
-      { text: "Preparar vinagreta con limón.", time: 0 },
-      { text: "Mezclar todo suavemente.", time: 0 }
+      { text: "Preparar vinagreta con limón, aceite y sal.", time: 0 },
+      { text: "Mezclar todo suavemente y servir.", time: 0 }
+    ]
+  },
+  {
+    id: 10,
+    title: "Bowl de Quinoa y Verduras",
+    image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=1000",
+    time: 25,
+    calories: 380,
+    mood: "healthy",
+    moodLabel: "Sano",
+    ingredients: [
+      { name: "Arroz", sub: "Quinoa real o Cuscús" },
+      { name: "Zanahoria", sub: "Remolacha rallada o Zapallo asado" },
+      { name: "Espinaca", sub: "Rúcula, Kale o Lechuga" },
+      { name: "Limón", sub: "Vinagre de manzana" },
+      { name: "Huevo", sub: "Garbanzos o Pollo desmenuzado" }
+    ],
+    steps: [
+      { text: "Cocinar la quinoa/arroz según instrucciones.", time: 900 },
+      { text: "Rallar zanahoria y preparar espinacas.", time: 0 },
+      { text: "Hervir un huevo (punto medio).", time: 420 },
+      { text: "Armar bowl: base de quinoa, verduras alrededor, huevo arriba.", time: 0 },
+      { text: "Aliñar con limón, aceite de oliva y sal.", time: 0 }
+    ]
+  },
+  {
+    id: 11,
+    title: "Sopa de Verduras",
+    image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=1000",
+    time: 35,
+    calories: 200,
+    mood: "healthy",
+    moodLabel: "Sano",
+    ingredients: [
+      { name: "Zanahoria", sub: "Calabaza o Batata" },
+      { name: "Papa", sub: "Zapallo o Choclo" },
+      { name: "Cebolla", sub: "Puerro o Cebolla de verdeo" },
+      { name: "Ajo", sub: "Ajo en polvo" }
+    ],
+    steps: [
+      { text: "Picar todas las verduras en cubos parejos.", time: 0 },
+      { text: "Rehogar cebolla y ajo en una olla con aceite.", time: 120 },
+      { text: "Agregar el resto de verduras y cubrir con agua.", time: 0 },
+      { text: "Cocinar tapado a fuego medio.", time: 1200 },
+      { text: "Opcionalmente licuar para crema. Servir con pan.", time: 0 }
+    ]
+  },
+  {
+    id: 12,
+    title: "Tostadas de Palta",
+    image: "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?auto=format&fit=crop&q=80&w=1000",
+    time: 10,
+    calories: 320,
+    mood: "healthy",
+    moodLabel: "Sano",
+    ingredients: [
+      { name: "Pan", sub: "Tostadas de arroz o Galletitas integrales" },
+      { name: "Aguacate", sub: "Hummus o Queso crema" },
+      { name: "Tomate", sub: "Pepino en rodajas o Rabanitos" },
+      { name: "Limón", sub: "Vinagre de sidra" }
+    ],
+    steps: [
+      { text: "Tostar el pan hasta que esté crocante.", time: 60 },
+      { text: "Pisar la palta con tenedor, agregar limón y sal.", time: 0 },
+      { text: "Untar generosamente sobre el pan.", time: 0 },
+      { text: "Decorar con rodajas de tomate y semillas si tenés.", time: 0 }
+    ]
+  },
+  // === FANCY ===
+  {
+    id: 13,
+    title: "Pasta al Pesto Casero",
+    image: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&q=80&w=1000",
+    time: 20,
+    calories: 550,
+    mood: "fancy",
+    moodLabel: "Fancy",
+    ingredients: [
+      { name: "Pasta", sub: "Ñoquis o Fideos de arroz" },
+      { name: "Ajo", sub: "Ajo en polvo" },
+      { name: "Queso", sub: "Levadura nutricional o Ricota salada" },
+      { name: "Aceite", sub: "Aceite de girasol (menos sabor)" }
+    ],
+    steps: [
+      { text: "Cocinar la pasta al dente en abundante agua con sal.", time: 480 },
+      { text: "Procesar/pisar ajo, queso rallado y aceite de oliva.", time: 0 },
+      { text: "Escurrir pasta reservando media taza de agua de cocción.", time: 0 },
+      { text: "Mezclar pasta con el pesto, agregando agua si queda seco.", time: 0 },
+      { text: "Servir con queso rallado extra por encima.", time: 0 }
+    ]
+  },
+  {
+    id: 14,
+    title: "Bruschetta Caprese",
+    image: "https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?auto=format&fit=crop&q=80&w=1000",
+    time: 15,
+    calories: 300,
+    mood: "fancy",
+    moodLabel: "Fancy",
+    ingredients: [
+      { name: "Pan", sub: "Tostadas o Crackers" },
+      { name: "Tomate", sub: "Tomates cherry o Pimiento asado" },
+      { name: "Queso", sub: "Ricota o Queso crema" },
+      { name: "Aceite", sub: "Aceite de girasol" },
+      { name: "Ajo", sub: "Ajo en polvo" }
+    ],
+    steps: [
+      { text: "Cortar el pan en rebanadas y tostar en horno o sartén.", time: 120 },
+      { text: "Frotar un diente de ajo sobre el pan caliente.", time: 0 },
+      { text: "Cortar tomates en cubitos, mezclar con aceite y sal.", time: 0 },
+      { text: "Colocar queso y tomate sobre cada pan.", time: 0 },
+      { text: "Terminar con un hilo de aceite de oliva.", time: 0 }
+    ]
+  },
+  {
+    id: 15,
+    title: "Tarta de Verduras",
+    image: "https://images.unsplash.com/photo-1608039829572-46b0e4d8a726?auto=format&fit=crop&q=80&w=1000",
+    time: 50,
+    calories: 450,
+    mood: "fancy",
+    moodLabel: "Fancy",
+    ingredients: [
+      { name: "Harina", sub: "Masa de tapa comprada" },
+      { name: "Huevo", sub: "Mezcla de harina y agua (para vegana)" },
+      { name: "Cebolla", sub: "Puerro o Cebolla de verdeo" },
+      { name: "Espinaca", sub: "Acelga, Zapallito o Brócoli" },
+      { name: "Queso", sub: "Ricota o Crema" }
+    ],
+    steps: [
+      { text: "Hacer masa: harina, agua, aceite y sal. Dejar reposar.", time: 600 },
+      { text: "Rehogar cebolla y espinacas. Dejar enfriar.", time: 300 },
+      { text: "Mezclar verduras con huevos batidos y queso.", time: 0 },
+      { text: "Estirar masa en tartera aceitada, volcar relleno.", time: 0 },
+      { text: "Hornear hasta dorar.", time: 1500 }
+    ]
+  },
+  {
+    id: 16,
+    title: "Peceto al Horno con Papas",
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=1000",
+    time: 75,
+    calories: 650,
+    mood: "fancy",
+    moodLabel: "Fancy",
+    ingredients: [
+      { name: "Carne", sub: "Pollo entero o Bondiola de cerdo" },
+      { name: "Papa", sub: "Batata o Zapallo" },
+      { name: "Cebolla", sub: "Chalota o Puerro" },
+      { name: "Ajo", sub: "Ajo en polvo" },
+      { name: "Vino", sub: "Caldo de carne o Cerveza" }
+    ],
+    steps: [
+      { text: "Sellar la carne en sartén caliente con aceite por todos los lados.", time: 300 },
+      { text: "Cortar papas y cebollas en cuartos. Poner en fuente para horno.", time: 0 },
+      { text: "Apoyar la carne sobre las verduras, agregar vino y ajo.", time: 0 },
+      { text: "Hornear a 180°C tapado con papel aluminio.", time: 2400 },
+      { text: "Destapar los últimos 15 min para dorar.", time: 900 },
+      { text: "Dejar reposar 10 min antes de cortar.", time: 600 }
     ]
   }
 ];
@@ -160,11 +459,12 @@ function StepTimer({ seconds }) {
 }
 
 // Componente extraído para evitar bug de hooks en render condicional
-function CookingScreen({ recipe, onBack }) {
+function CookingScreen({ recipe, onBack, onFinish }) {
   const [activeTab, setActiveTab] = useState('prep');
   const [checkedSteps, setCheckedSteps] = useState({});
   const [checkedIngredients, setCheckedIngredients] = useState({});
   const [manuallyFound, setManuallyFound] = useState({});
+  const [showDone, setShowDone] = useState(false);
 
   const toggleFound = (idx) => {
     setManuallyFound(prev => ({ ...prev, [idx]: !prev[idx] }));
@@ -273,10 +573,27 @@ function CookingScreen({ recipe, onBack }) {
                 </div>
               </div>
             ))}
-            <button className="w-full mt-12 py-5 bg-[#A0AF72] text-white rounded-2xl font-black text-lg shadow-xl shadow-[#A0AF72]/30 flex items-center justify-center space-x-2 hover:bg-[#8f9d63] transition-colors">
-              <Check size={24} />
-              <span>¡Plato Terminado!</span>
-            </button>
+            {showDone ? (
+              <div className="mt-12 text-center animate-fadeIn">
+                <div className="text-6xl mb-4">🎉</div>
+                <h3 className="text-2xl font-black text-stone-800 mb-2">¡Buen provecho!</h3>
+                <p className="text-stone-400 text-sm mb-6">Plato completado exitosamente</p>
+                <button
+                  onClick={onFinish}
+                  className="w-full py-4 bg-stone-900 text-white rounded-2xl font-bold text-lg hover:bg-black transition-colors"
+                >
+                  Volver al inicio
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => setShowDone(true)}
+                className="w-full mt-12 py-5 bg-[#A0AF72] text-white rounded-2xl font-black text-lg shadow-xl shadow-[#A0AF72]/30 flex items-center justify-center space-x-2 hover:bg-[#8f9d63] transition-colors"
+              >
+                <Check size={24} />
+                <span>¡Plato Terminado!</span>
+              </button>
+            )}
           </div>
         )}
       </div>
@@ -287,19 +604,29 @@ function CookingScreen({ recipe, onBack }) {
 // ==========================================
 // 4. COMPONENTE PRINCIPAL (APP)
 // ==========================================
+const DEFAULT_PANTRY = [
+  { name: 'Pollo', category: 'carnes', quantity: 1, unit: 'kg' },
+  { name: 'Arroz', category: 'despensa', quantity: null, unit: 'kg' },
+  { name: 'Ajo', category: 'verduras', quantity: 3, unit: 'u' },
+  { name: 'Huevos', category: 'lacteos', quantity: 6, unit: 'u' },
+  { name: 'Leche', category: 'lacteos', quantity: 1, unit: 'L' },
+  { name: 'Tomate', category: 'verduras', quantity: null, unit: 'u' },
+  { name: 'Chocolate', category: 'dulces', quantity: null, unit: 'g' }
+];
+
+const loadPantry = () => {
+  try {
+    const saved = localStorage.getItem('cocina-app-pantry');
+    if (saved) return JSON.parse(saved);
+  } catch (e) { /* ignore */ }
+  return DEFAULT_PANTRY;
+};
+
 export default function App() {
   const [screen, setScreen] = useState('home');
   const [selectedRecipe, setSelectedRecipe] = useState(null);
 
-  const [finalPantryList, setFinalPantryList] = useState([
-    { name: 'Pollo', category: 'carnes', quantity: 1, unit: 'kg' },
-    { name: 'Arroz', category: 'despensa', quantity: null, unit: 'kg' },
-    { name: 'Ajo', category: 'verduras', quantity: 3, unit: 'u' },
-    { name: 'Huevos', category: 'lacteos', quantity: 6, unit: 'u' },
-    { name: 'Leche', category: 'lacteos', quantity: 1, unit: 'L' },
-    { name: 'Tomate', category: 'verduras', quantity: null, unit: 'u' },
-    { name: 'Chocolate', category: 'dulces', quantity: null, unit: 'g' }
-  ]);
+  const [finalPantryList, setFinalPantryList] = useState(loadPantry);
 
   const [editingItem, setEditingItem] = useState(null);
   const [editQty, setEditQty] = useState('');
@@ -312,6 +639,12 @@ export default function App() {
   const [newUnit, setNewUnit] = useState('u');
   const [timeMood, setTimeMood] = useState(30);
   const [selectedMood, setSelectedMood] = useState('energetic');
+  const [duplicateWarning, setDuplicateWarning] = useState('');
+
+  // Persistencia: guardar alacena en localStorage
+  useEffect(() => {
+    localStorage.setItem('cocina-app-pantry', JSON.stringify(finalPantryList));
+  }, [finalPantryList]);
 
   const handleInputChange = (e) => {
     const val = e.target.value;
@@ -335,13 +668,24 @@ export default function App() {
 
   const addItem = () => {
     if (newItem.trim()) {
-      const category = detectCategory(newItem.trim());
+      const trimmed = newItem.trim();
+      // Prevenir duplicados
+      const exists = finalPantryList.some(item =>
+        item.name.toLowerCase() === trimmed.toLowerCase()
+      );
+      if (exists) {
+        setDuplicateWarning(`"${trimmed}" ya está en tu alacena`);
+        setTimeout(() => setDuplicateWarning(''), 2000);
+        return;
+      }
+      const category = detectCategory(trimmed);
       const quantity = showQtyInput && newQty ? parseFloat(newQty) : null;
-      const unit = showQtyInput ? newUnit : detectUnit(newItem.trim());
-      setFinalPantryList([...finalPantryList, { name: newItem.trim(), category, quantity, unit }]);
+      const unit = showQtyInput ? newUnit : detectUnit(trimmed);
+      setFinalPantryList([...finalPantryList, { name: trimmed, category, quantity, unit }]);
       setNewItem('');
       setNewQty('');
       setShowSuggestions(false);
+      setDuplicateWarning('');
     }
   };
 
@@ -368,16 +712,18 @@ export default function App() {
   };
 
   const getProcessedRecipes = () => {
-    return RECIPES_DB.map(recipe => {
-      const recipeWithStatus = recipe.ingredients.map(ing => ({
-        ...ing,
-        has: checkHasIngredient(finalPantryList, ing.name)
-      }));
-      const totalIng = recipeWithStatus.length;
-      const haveIng = recipeWithStatus.filter(i => i.has).length;
-      const matchScore = Math.round((haveIng / totalIng) * 100);
-      return { ...recipe, ingredients: recipeWithStatus, matchScore };
-    }).sort((a, b) => b.matchScore - a.matchScore);
+    return RECIPES_DB
+      .filter(recipe => recipe.mood === selectedMood && recipe.time <= timeMood)
+      .map(recipe => {
+        const recipeWithStatus = recipe.ingredients.map(ing => ({
+          ...ing,
+          has: checkHasIngredient(finalPantryList, ing.name)
+        }));
+        const totalIng = recipeWithStatus.length;
+        const haveIng = recipeWithStatus.filter(i => i.has).length;
+        const matchScore = Math.round((haveIng / totalIng) * 100);
+        return { ...recipe, ingredients: recipeWithStatus, matchScore };
+      }).sort((a, b) => b.matchScore - a.matchScore);
   };
 
   // --- PANTALLA HOME ---
@@ -416,6 +762,11 @@ export default function App() {
                 <Plus size={20} />
               </button>
             </div>
+            {duplicateWarning && (
+              <div className="mb-2 text-xs text-amber-200 bg-amber-900/30 px-3 py-2 rounded-lg animate-fadeIn">
+                ⚠️ {duplicateWarning}
+              </div>
+            )}
             <div className="flex flex-wrap gap-2">
               {finalPantryList.slice(0, 4).map((item, idx) => (
                 <span key={idx} className="bg-white/10 text-white/90 text-xs px-3 py-1.5 rounded-lg border border-white/5 flex items-center backdrop-blur-sm">
@@ -538,6 +889,11 @@ export default function App() {
                 <option value="u">u</option>
                 <option value="paq">paq</option>
               </select>
+            </div>
+          )}
+          {duplicateWarning && (
+            <div className="mt-2 text-xs text-amber-700 bg-amber-50 px-3 py-2 rounded-xl animate-fadeIn font-medium">
+              ⚠️ {duplicateWarning}
             </div>
           )}
           {showSuggestions && suggestions.length > 0 && (
@@ -683,6 +1039,22 @@ export default function App() {
           </div>
         </div>
         <div className="flex-1 overflow-y-auto px-4 pb-20 space-y-4">
+          {recipes.length === 0 && (
+            <div className="text-center mt-16 px-6">
+              <ChefHat size={64} className="mx-auto mb-6 text-stone-300" />
+              <h3 className="text-xl font-bold text-stone-600 mb-2">No hay recetas</h3>
+              <p className="text-stone-400 text-sm leading-relaxed">
+                No encontramos recetas para <strong>{selectedMood}</strong> en <strong>{timeMood} min</strong>.
+                Probá subir el tiempo o cambiar el mood.
+              </p>
+              <button
+                onClick={() => setScreen('home')}
+                className="mt-6 px-6 py-3 bg-[#E9633E] text-white rounded-2xl font-bold text-sm hover:bg-[#d85532] transition-colors"
+              >
+                Ajustar filtros
+              </button>
+            </div>
+          )}
           {recipes.map((recipe) => (
             <div
               key={recipe.id}
@@ -744,7 +1116,7 @@ export default function App() {
           {screen === 'inventory' && renderInventory()}
           {screen === 'results' && renderResults()}
           {screen === 'cooking' && selectedRecipe && (
-            <CookingScreen recipe={selectedRecipe} onBack={() => setScreen('results')} />
+            <CookingScreen recipe={selectedRecipe} onBack={() => setScreen('results')} onFinish={() => setScreen('home')} />
           )}
         </div>
         <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1.5 bg-stone-900 rounded-full z-50 opacity-90"></div>
